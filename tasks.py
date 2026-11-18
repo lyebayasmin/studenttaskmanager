@@ -1,7 +1,9 @@
 tasks = []
 
 def add_task(task_list, title):
-    task = {"id": len(task_list) + 1, "title": title, "done": False}
+    if title is None or not title.strip():
+        raise ValueError("Task title cannot be empty")
+    task = {"id": len(task_list) + 1, "title": title.strip(), "done": False}
     task_list.append(task)
     return task
 
