@@ -15,6 +15,8 @@ def display_tasks(task_list):
 def complete_task(task_list, task_id):
     for t in task_list:
         if t["id"] == task_id:
+            if t["done"]:
+                return False
             t["done"] = True
             return True
     return False
