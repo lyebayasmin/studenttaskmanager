@@ -14,7 +14,14 @@ def main():
         elif choice == "3":
             tasks.complete_task(tasks.tasks, int(input("Task ID: ")))
         elif choice == "4":
-            tasks.delete_task(tasks.tasks, int(input("Task ID: ")))
+            try:
+                task_id = int(input("Task ID: "))
+                if tasks.delete_task(tasks.tasks, task_id):
+                    print("Task deleted")
+                else:
+                    print("Invalid or unknown task ID")
+            except ValueError:
+                print("Error: Task ID must be a number")
         elif choice == "5":
             break
 
