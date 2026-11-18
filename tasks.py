@@ -20,6 +20,8 @@ def complete_task(task_list, task_id):
     return False
 
 def delete_task(task_list, task_id):
+    if not isinstance(task_id, int) or task_id <= 0:
+        return False
     for t in task_list:
         if t["id"] == task_id:
             task_list.remove(t)
