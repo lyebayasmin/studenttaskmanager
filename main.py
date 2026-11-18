@@ -9,7 +9,14 @@ def main():
         elif choice == "2":
             tasks.display_tasks(tasks.tasks)
         elif choice == "3":
-            tasks.complete_task(tasks.tasks, int(input("Task ID: ")))
+            try:
+                task_id = int(input("Task ID: "))
+                if tasks.complete_task(tasks.tasks, task_id):
+                    print("Task completed")
+                else:
+                    print("Task not found or already completed")
+            except ValueError:
+                print("Error: Task ID must be a number")
         elif choice == "4":
             tasks.delete_task(tasks.tasks, int(input("Task ID: ")))
         elif choice == "5":
